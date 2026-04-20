@@ -1,0 +1,45 @@
+ADB QUICK REFERENCE — Copy & Paste Commands
+
+=== Device Info ===
+adb devices
+adb get-serialno
+adb shell getprop ro.product.model
+adb shell getprop ro.build.version.release
+adb shell dumpsys battery | grep level
+
+=== Install & Uninstall ===
+adb install app.apk
+adb uninstall com.package.name
+adb shell pm uninstall -k --user 0 com.package
+
+=== Permissions ===
+adb shell pm grant com.pkg android.permission.CAMERA
+adb shell pm revoke com.pkg android.permission.LOCATION
+
+=== Storage ===
+adb push local_file /sdcard/
+adb pull /sdcard/file ./
+adb shell ls /sdcard/
+
+=== Screen Control ===
+adb shell input tap 500 500
+adb shell input swipe 100 500 500 100
+adb shell input text "hello"
+adb shell input keyevent 26  (power button)
+
+=== Logcat ===
+adb logcat
+adb logcat -c  (clear)
+adb logcat | grep MyApp
+
+=== Settings ===
+adb shell settings put system screen_brightness 200
+adb shell settings put global airplane_mode_on 1
+adb shell settings get secure location_mode
+
+=== More ===
+adb reboot
+adb reboot bootloader
+adb shell am force-stop com.package
+adb forward tcp:8080 tcp:8080
+adb shell pm list packages -3
